@@ -1,5 +1,6 @@
 package com.totty.shoppingcart.services.impls;
 
+import com.totty.shoppingcart.exceptions.CategoryNotFoundException;
 import com.totty.shoppingcart.exceptions.ProductNotFoundException;
 import com.totty.shoppingcart.models.request.AddProductRequest;
 import com.totty.shoppingcart.models.Category;
@@ -47,27 +48,28 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product updateProduct(UpdateProductRequest request, Long id) {
         return productRepository.findById(id)
-                .map(existingProduct -> updateExistingProduct(request, id))
-                .map(productRepository::save)
+                .map(existingProduct -> {
+                    existingProduct.setName(request.getName());
+                    existingProduct.setBrand(request.getBrand());
+                    existingProduct.setPrice(request.getPrice());
+                    existingProduct.setDescription(request.getDescription());
+                    existingProduct.setInventory(request.getInventory());
+
+                    Category category = Optional.ofNullable(categoryRepository.findByName(request.getCategory().getName()))
+                            .orElseGet(() -> {
+                                Category newCategory = new Category();
+                                newCategory.setName(request.getCategory().getName());
+                                return categoryRepository.save(newCategory);
+                            });
+
+                    existingProduct.setCategory(category);
+
+                    return productRepository.save(existingProduct);
+                })
                 .orElseThrow(() -> new ProductNotFoundException(String.format("Product with id %s not found", id)));
     }
 
-    private Product updateExistingProduct(UpdateProductRequest updateProductRequest, Long id) {
-        Product existingProduct = productRepository.findById(id).orElseThrow(
-                () -> new ProductNotFoundException(String.format("Product with id %s not found", id))
-        );
-        existingProduct.setName(updateProductRequest.getName());
-        existingProduct.setBrand(updateProductRequest.getBrand());
-        existingProduct.setPrice(updateProductRequest.getPrice());
-        existingProduct.setDescription(updateProductRequest.getDescription());
-        existingProduct.setInventory(updateProductRequest.getInventory());
 
-        Category category = categoryRepository.findByName(updateProductRequest.getCategory().getName());
-
-        existingProduct.setCategory(category);
-
-        return existingProduct;
-    }
 
     @Override
     public void deleteProduct(Long id) {
