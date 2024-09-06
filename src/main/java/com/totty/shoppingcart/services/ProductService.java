@@ -1,7 +1,7 @@
 package com.totty.shoppingcart.services;
 
 import com.totty.shoppingcart.models.request.AddProductRequest;
-import com.totty.shoppingcart.models.Product;
+import com.totty.shoppingcart.entities.Product;
 import com.totty.shoppingcart.models.request.UpdateProductRequest;
 
 import java.util.List;

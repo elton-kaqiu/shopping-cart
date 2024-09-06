@@ -1,7 +1,7 @@
 package com.totty.shoppingcart.services;
 
-import com.totty.shoppingcart.dtos.ImageDto;
-import com.totty.shoppingcart.models.Image;
+import com.totty.shoppingcart.models.dto.ImageDto;
+import com.totty.shoppingcart.entities.Image;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

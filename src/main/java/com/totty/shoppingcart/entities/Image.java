@@ -1,4 +1,4 @@
-package com.totty.shoppingcart.models;
+package com.totty.shoppingcart.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

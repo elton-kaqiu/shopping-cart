@@ -2,8 +2,8 @@ package com.totty.shoppingcart.services.impls;
 
 import com.totty.shoppingcart.exceptions.ProductNotFoundException;
 import com.totty.shoppingcart.models.request.AddProductRequest;
-import com.totty.shoppingcart.models.Category;
-import com.totty.shoppingcart.models.Product;
+import com.totty.shoppingcart.entities.Category;
+import com.totty.shoppingcart.entities.Product;
 import com.totty.shoppingcart.models.request.UpdateProductRequest;
 import com.totty.shoppingcart.repositories.CategoryRepository;
 import com.totty.shoppingcart.repositories.ProductRepository;

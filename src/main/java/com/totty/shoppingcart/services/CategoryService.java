@@ -1,7 +1,7 @@
 package com.totty.shoppingcart.services;
 
 
-import com.totty.shoppingcart.models.Category;
+import com.totty.shoppingcart.entities.Category;
 
 import java.util.List;
 

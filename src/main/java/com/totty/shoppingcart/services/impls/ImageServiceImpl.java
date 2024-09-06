@@ -1,10 +1,10 @@
 package com.totty.shoppingcart.services.impls;
 
 
-import com.totty.shoppingcart.dtos.ImageDto;
+import com.totty.shoppingcart.models.dto.ImageDto;
 import com.totty.shoppingcart.exceptions.ImageNotFoundException;
-import com.totty.shoppingcart.models.Image;
-import com.totty.shoppingcart.models.Product;
+import com.totty.shoppingcart.entities.Image;
+import com.totty.shoppingcart.entities.Product;
 import com.totty.shoppingcart.repositories.ImageRepository;
 import com.totty.shoppingcart.services.ImageService;
 import com.totty.shoppingcart.services.ProductService;

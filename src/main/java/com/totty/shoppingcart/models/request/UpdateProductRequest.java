@@ -1,6 +1,6 @@
 package com.totty.shoppingcart.models.request;
 
-import com.totty.shoppingcart.models.Category;
+import com.totty.shoppingcart.entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.totty.shoppingcart.dtos;
+package com.totty.shoppingcart.models.dto;
 
 import lombok.Data;
 
