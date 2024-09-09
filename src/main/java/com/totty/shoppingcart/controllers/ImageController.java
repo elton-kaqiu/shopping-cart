@@ -30,9 +30,9 @@ public class ImageController {
     public ResponseEntity<ApiResponse> saveImages(@RequestParam List<MultipartFile> files, @RequestParam Long productId) {
         try {
             List<ImageDto> imageDtos = imageService.saveImage(files, productId);
-            return ResponseEntity.ok(new ApiResponse<>("Upload successful", imageDtos));
+            return ResponseEntity.ok(new ApiResponse("Upload successful", imageDtos));
         } catch (Exception e) {
-            return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse<>("Upload failed", e.getMessage()));
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse("Upload failed", e.getMessage()));
         }
     }
 
@@ -54,12 +54,12 @@ public class ImageController {
 
             if (image != null) {
                 imageService.updateImage(file, imageId);
-                return ResponseEntity.ok(new ApiResponse<>("Update successful", null));
+                return ResponseEntity.ok(new ApiResponse("Update successful", null));
             }
         } catch (ImageNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(e.getMessage(), null));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
-        return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse<>("Update failed", INTERNAL_SERVER_ERROR));
+        return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse("Update failed", INTERNAL_SERVER_ERROR));
     }
 
     @PutMapping("/image/{imageId}/delete")
@@ -69,12 +69,12 @@ public class ImageController {
 
             if (image != null) {
                 imageService.deleteImageById(imageId);
-                return ResponseEntity.ok(new ApiResponse<>("Delete successful", null));
+                return ResponseEntity.ok(new ApiResponse("Delete successful", null));
             }
         } catch (ImageNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(e.getMessage(), null));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
-        return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse<>("Delete failed", INTERNAL_SERVER_ERROR));
+        return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse("Delete failed", INTERNAL_SERVER_ERROR));
     }
 
 
