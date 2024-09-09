@@ -12,10 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 public class ApiResponse<T> {
     private String message;
+    private Object data;
+
+    /*    private boolean success;
     private int statusCode;
-    private boolean success;
     private T data;
     private List<String> errors;
     private String path;
-    private LocalDateTime timestamp;
+    private LocalDateTime timestamp;*/
 }
