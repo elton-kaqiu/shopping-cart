@@ -23,6 +23,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("${api.prefix}/images")
+@CrossOrigin(origins = "*")
 public class ImageController {
     private final ImageService imageService;
 
