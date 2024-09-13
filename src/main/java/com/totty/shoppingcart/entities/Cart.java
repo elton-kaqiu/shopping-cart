@@ -1,6 +1,7 @@
 package com.totty.shoppingcart.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,14 +36,14 @@ public class Cart {
         item.setCart(null);
         updateTotalAmount();
     }
+
     private void updateTotalAmount() {
-        this.totalAmount=items.stream().map(item->{
-            BigDecimal unitPrice=item.getUnitPrice();
-            if(unitPrice==null){
+        this.totalAmount = items.stream().map(item -> {
+            BigDecimal unitPrice = item.getUnitPrice();
+            if (unitPrice == null) {
                 return BigDecimal.ZERO;
             }
             return unitPrice.multiply(BigDecimal.valueOf(item.getQuantity()));
         }).reduce(BigDecimal.ZERO, BigDecimal::add);
-
     }
 }
